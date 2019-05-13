@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+Environment=DISPLAY=:0
+
+
+BATTINFO=`acpi -b`
+BATTINFO=${BATTINFO#*: }
+CHARGESTATUS=${BATTINFO%%,*}
+PERCT=${BATTINFO#*,}
+PERCT=${PERCT%"%"*}
+
+if [ $CHARGESTATUS = "Discharging" ]; then
+  if [ $PERCT -lt 10 ]; then
+     notify-send -i ~/.icons/batterylow.png -u critical "$BATTINFO"
+  elif [ $PERCT -lt 25 ]; then
+     notify-send -i ~/.icons/batteryMid.png -u normal "$BATTINFO"
+  fi
+fi
+
+
