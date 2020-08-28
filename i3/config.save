@@ -31,63 +31,33 @@ new_window none
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Start gestures
-exec --no-startup-id libinput-gestures-setup start
-
-# Start dunst
-#exec --no-startup-id dunst
-
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Start browser
-bindsym $mod+b exec --no-startup-id firefox
-
-# Change Background
-bindsym $mod+x exec --no-startup-id randomWallpaper
-
-# Blur
-#exec --no-startup-id blurme -d /tmp/blurme -c /tmp/blurme
-
-# Check Displays
-exec_always --no-startup-id checkMonitor
-
-# Start polybar
-exec --no-startup-id ~/.config/polybar/launch.sh
-
-#Wallpaper
-exec --no-startup-id randomWallpaper
+bindsym $mod+b exec firefox-esr
 
 # Start compositor
-#exec --no-startup-id picom -f -I 0.2 -O 0.2 --experimental-backends
-
-# Ulauncher
-exec --no-startup-id ulauncher --hide-window
-
-# Lock Computer
-bindsym $mod+l exec --no-startup-id i3lock -c 000000 --indicator
+exec --no-startup-id compton
 
 # Screenshot
 bindsym --release Print exec --no-startup-id  maim ~/Pictures/screenshots/$(date +%s).png
 bindsym --release $mod+Print exec --no-startup-id  maim -s ~/Pictures/screenshots/$(date +%s).png
 
 # Media keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id volumeControl -u
-bindsym XF86AudioLowerVolume exec --no-startup-id volumeControl -d
-bindsym XF86AudioMute exec --no-startup-id volumeControl -m
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Brightness keys
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
-
-# Bluetooth
-exec --no-startup-id blueman-applet
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-# bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -96,7 +66,7 @@ bindsym $mod+Shift+q kill
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-#bindsym $mod+l focus up
+bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -180,40 +150,12 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-bindsym $mod+Shift+m workspace next
-bindsym $mod+Shift+n workspace prev
-
-bindsym $mod+Tab workspace next
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-mode "Music Playback" {
-	# Binding triggered when you enter Music Playback
-	bindsym Right exec --no-startup-id playerctl next
-	bindsym Left exec --no-startup-id playerctl previous
-	bindsym Up exec --no-startup-id volumeControl -u
-	bindsym Down exec --no-startup-id volumeControl -d
-	
-	bindsym d exec --no-startup-id playerctl next
-	bindsym a exec --no-startup-id playerctl previous
-	bindsym w exec --no-startup-id volumeControl -u
-	bindsym s exec --no-startup-id volumeControl -d
-	
-	bindsym space exec --no-startup-id playerctl play-pause
-
-	
-	# Go back to normal
-	bindsym Return mode "default"
-        bindsym Escape mode "default"
-	bindsym $mod+grave mode "default"
-}
-
-bindsym $mod+grave mode "Music Playback"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -242,17 +184,16 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+}
+
 ### i3-gaps stuff ###
 
 # Necessary for i3-gaps to work properly (pixel can be any value)
 for_window [class="^.*"] border pixel 0
-
-# Intelij splash screen
-for_window [title="win0"] floating enable
-
-# Screen recorder
-for_window [title="recordMyDesktop"] floating enable
-
 
 # Smart Gaps
 smart_gaps on
@@ -302,3 +243,4 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+

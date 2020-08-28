@@ -1,0 +1,5 @@
+killall blurme
+rm /home/daniel/.fehbg
+rm /tmp/blurme/*
+wal -i /home/daniel/Pictures/backgrounds
+blurme -d /tmp/blurme -c /tmp/blurme -t 0.03 & 

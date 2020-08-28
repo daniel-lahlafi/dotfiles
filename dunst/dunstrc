@@ -64,7 +64,7 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x40-5+50"
+    geometry = "550x300-5+50"
     
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -78,7 +78,7 @@
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
     # Set to 0 to disable.
-    idle_threshold = 120
+    idle_threshold = 0
     
     # Which monitor should the notifications be displayed on.
     monitor = 0
@@ -145,7 +145,7 @@
     icon_position = left
 
     # Max Icons size
-    max_icon_size = 64
+    max_icon_size = 128
 
     # Paths to default icons.
     icon_folders = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -246,3 +246,4 @@
 #    urgency = normal
 #
 # vim: ft=cfg
+
