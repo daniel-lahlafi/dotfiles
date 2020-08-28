@@ -1,0 +1,25 @@
+Xft.antialias: 1
+Xft.autohint: 0
+Xft.hinting: 1
+Xft.lcdfilter:  lcddefault
+Xft.rgba: rbg
+Xft.hintstyle: hintfull
+Xft.dpi: 192
+
+URxvt.allow_bold: true
+URxvt*font: xft:meslolgsnf:regular:size=12
+URxvt*boldfont: xft:meslolgsnf:bold:size=12
+URxvt*italicFont: xft:meslolgsnf:pixelsize=12:Italic
+URxvt*boldItalicFont: xft:meslolgsnf:pixelsize=12:Bold:Italic
+URxvt*letterSpace: -1
+
+URxvt.keysym.Control-Up:     \033[1;5A
+URxvt.keysym.Control-Down:   \033[1;5B
+URxvt.keysym.Control-Left:   \033[1;5D
+URxvt.keysym.Control-Right:  \033[1;5C
+
+URxvt.transparency: True
+URxvt*shading: 10
+URxvt*tintColor: #000000
+URxvt*blurRadius: 5
+URxvt.scrollBar: False
