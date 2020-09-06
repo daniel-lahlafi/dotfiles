@@ -1,0 +1,18 @@
+#!/bin/bash
+SINK=$(pacmd list-sinks | grep 'index:' | cut -b12- | tail -1)
+case $1 in
+   -u)
+      pactl -- set-sink-volume $SINK +5%
+      ;;
+   -d)
+      pactl -- set-sink-volume $SINK -5%
+      ;;
+   -m)
+      pactl -- set-sink-mute $SINK toggle
+      ;;
+   *)
+      echo "-u:       volume up"
+      echo "-d:       volume down"
+      echo "-m:       toggle mute"
+      ;;
+esac
