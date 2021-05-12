@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+killall blurme
+rm /home/daniel/.fehbg
+rm /tmp/blurme/*
+rm -rf "$HOME/.cache/i3lock"
+
+wal -i /home/daniel/Pictures/backgrounds
+
+sleep 1
+
+BACKGROUND=$(cat $HOME/.fehbg | grep -oP "feh --no-fehbg --bg-fill '\K[^']+")
+blurme -d /tmp/blurme -c /tmp/blurme -t 0.03 &
+lock -u "$BACKGROUND" &
