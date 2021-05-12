@@ -1,0 +1,51 @@
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+xsetroot -cursor_name left_ptr
+xset -dpms s off
+
+changebackground
+
+$HOME/.config/polybar/launch.sh
+lxqt-policykit-agent &
+ulauncher --hide-window &
+picom --experimental-backends &
+dunst &
+
+. "${HOME}/.cache/wal/colors.sh"
+
+# Applets
+redshift-gtk &
+megasync &
+blueman-applet &
+
+bspc monitor DP-0 -d 1 2 3 4 5
+bspc monitor HDMI-0 -d 6 7 8 9 0
+
+bspc config window_gap           5
+
+bspc config focused_border_color "$color1"
+bspc config border_width         2
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config single_monocle       true
+
+bspc config focus_follows_pointer true
+
+bspc rule -a Gimp state=floating follow=on
+bspc rule -a notepadqq state=floating follow=on
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a Ulauncher border=off state=floating focus=on
+bspc rule -a ulauncher border=off state=floating focus=on
+bspc rule -a zoom state=floating border=off
+bspc rule -a '*:*:Picture-in-picture' state=floating border=off
+bspc rule -a "Android Studio Setup Wizard" state=floating
+bspc rule -a "Welcome to Android Studio" state=floating
+bspc rule -a '*:*:Android Emulator - Pixel_4_API_29:5554' state=floating
+bspc rule -a megasync state=floating
+bspc rule -a MEGAsync state=floating
+bspc rule -a Zathura state=tiled
