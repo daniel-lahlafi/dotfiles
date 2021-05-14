@@ -1,5 +1,5 @@
 [global]
-    font = Monospace 10
+    font = Roboto 14
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
@@ -22,6 +22,8 @@
     #   %p  progress value if set ([  0%] to [100%]) or nothing
     # Markup is allowed
     format = "<b>%s</b>\n%b"
+
+    corner_radius = 10
     
     # Sort messages by urgency.
     sort = yes
@@ -64,7 +66,7 @@
     # the top and down respectevly.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "550x300-5+50"
+    geometry = "350x300-5+50"
     
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -105,6 +107,9 @@
     
     # Display indicators for URLs (U) and actions (A).
     show_indicators = yes
+ 
+    mouse_left_click = do_action
+  
     
     # The height of a single line.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -139,7 +144,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
     
     # Browser for opening urls in context menu.
-    browser = /usr/bin/firefox -new-tab
+    browser = brave -new-tab
 
     # Align icons left/right/off
     icon_position = left
@@ -162,18 +167,18 @@
     # Xev might be helpful to find names for keys.
     
     # Close notification.
-    close = ctrl+space
+    #close = ctrl+space
     
     # Close all notifications.
-    close_all = ctrl+shift+space
+    #close_all = ctrl+shift+space
     
     # Redisplay last message(s).
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1".
-    history = ctrl+grave
+    #history = ctrl+grave
     
     # Context menu.
-    context = ctrl+shift+period
+    #context = ctrl+shift+period
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
@@ -221,10 +226,9 @@
 #    script = dunst_test.sh
 
 #[ignore]
-#    # This notification will not be displayed
-#    summary = "foobar"
-#    format = ""
-
+#     # This notification will not be displayed
+#     summary = (A)*
+#     format =  ""
 #[signed_on]
 #    appname = Pidgin
 #    summary = "*signed on*"
