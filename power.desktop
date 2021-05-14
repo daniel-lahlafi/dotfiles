@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Power off
+Comment=Power
+Exec=/sbin/poweroff
+Icon=power
+Terminal=false
+StartupNotify=true
+Type=Application
