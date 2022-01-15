@@ -6,22 +6,20 @@ xsetroot -cursor_name left_ptr
 xset -dpms s off
 
 changebackground
+. "${HOME}/.cache/wal/colors.sh"
+
 
 $HOME/.config/polybar/launch.sh
+/usr/lib/geoclue-2.0/demos/agent &
+/usr/lib/kdeconnectd &
 lxqt-policykit-agent &
 ulauncher --hide-window &
 picom --experimental-backends &
 dunst &
-
-. "${HOME}/.cache/wal/colors.sh"
-
-# Applets
-redshift-gtk &
-megasync &
-blueman-applet &
+flameshot &
 
 bspc monitor DP-0 -d 1 2 3 4 5
-bspc monitor HDMI-0 -d 6 7 8 9 0
+bspc monitor DP-2 -d 6 7 8 9 0
 
 bspc config window_gap           5
 
@@ -42,10 +40,19 @@ bspc rule -a Screenkey manage=off
 bspc rule -a Ulauncher border=off state=floating focus=on
 bspc rule -a ulauncher border=off state=floating focus=on
 bspc rule -a zoom state=floating border=off
+bspc rule -a '*:*:Zoom Meeting' state=floating border=on
 bspc rule -a '*:*:Picture-in-picture' state=floating border=off
 bspc rule -a "Android Studio Setup Wizard" state=floating
 bspc rule -a "Welcome to Android Studio" state=floating
 bspc rule -a '*:*:Android Emulator - Pixel_4_API_29:5554' state=floating
-bspc rule -a megasync state=floating
+#bspc rule -a megasync state=floating
 bspc rule -a MEGAsync state=floating
 bspc rule -a Zathura state=tiled
+
+sleep 10
+
+# Applets
+# redshift-gtk &
+# megasync &
+blueman-applet &
+redshift -l 51:0

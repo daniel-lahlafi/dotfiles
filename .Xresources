@@ -1,7 +1,5 @@
-Xft.dpi: 192
-
 URxvt.allow_bold: true
-URxvt.font: xft:MesloLGS NF:autohint=true:size=11
+URxvt.font: xft:MesloLGS NF:autohint=true:size=15
 URxvt*letterSpace: -1
 
 URxvt.keysym.Control-Up:     \033[1;5A
